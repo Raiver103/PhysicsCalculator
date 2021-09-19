@@ -1,0 +1,65 @@
+﻿<Page x:Class="PhysicsCalculator.View.RoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+      DataContext="{Binding Source={StaticResource VmLocator}, Path=RoVM}"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RoPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="203*"/>
+            <ColumnDefinition Width="424*"/>
+            <ColumnDefinition Width="167*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="116*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="chose what are you want to find"  Grid.Column="0" Grid.Row="0"/>
+
+        <ComboBox Grid.Row="1" Grid.Column="0" Margin="3,3,3,3" 
+                              SelectedValue="{Binding WhatSearch}"
+                              ItemsSource="{Binding Search}">
+        </ComboBox>
+
+        <Button Grid.Column="0" Grid.Row="2" Margin="42,2,41,2" Command="{Binding FindParamCommand}">
+            Go to write velechins
+        </Button>
+
+        <DockPanel  Grid.Column="2" Grid.Row="0">
+            <TextBlock Text="We Have:"/>
+        </DockPanel>
+        <DockPanel  Grid.Column="2" Margin="0,28,0,27" Grid.RowSpan="3">
+            <TextBlock Text="p:" Margin="0 0 5 0" ToolTip="Это плотность (кг/м3)"/>
+            <TextBox Text="{Binding P}" IsReadOnly="{Binding IsEnabledP}"/>
+        </DockPanel>
+        <DockPanel  Grid.Column="2" Grid.Row="1" Margin="0,28,0,0" Grid.RowSpan="2">
+            <TextBlock Text="m:" Margin="0 0 3 0" ToolTip="Это масса (кг)"/>
+            <TextBox  Text="{Binding M}" IsReadOnly="{Binding IsEnabledM}"/>
+        </DockPanel>
+        <DockPanel  Grid.Column="2" Grid.Row="3" Margin="0,1,0,0">
+            <TextBlock Text="V:" Margin="0 0 3 0" ToolTip="Это объем (м3)"/>
+            <TextBox Text="{Binding V}" IsReadOnly="{Binding IsEnabledV}"/>
+        </DockPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <Button  Height="20" VerticalAlignment="Top" Command="{Binding SearchCommand}" Margin="170,3,170,0">
+                Go
+            </Button>
+            
+            <TextBlock Text="{Binding Answer}" Margin="120,10,120,0"/> 
+        </StackPanel>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" TextWrapping="Wrap">
+                        p = m / V - главная фомула которую можно проверить на практике
+                        из нее иожно узнать  m = v * V и V = m / p
+        </TextBlock>
+    </Grid>
+</Page>
