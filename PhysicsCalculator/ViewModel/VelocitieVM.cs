@@ -23,9 +23,9 @@ namespace PhysicsCalculator.ViewModel
             {
                 "v", "S", "t"
             };
-            IsEnabledV = true;
-            IsEnabledS = true;
-            IsEnabledT = true;
+            IsCollapsedV = "Collapsed";
+            IsCollapsedS = "Collapsed";
+            IsCollapsedT = "Collapsed";
         }
 
         private RelayCommand searchCommand;
@@ -43,7 +43,7 @@ namespace PhysicsCalculator.ViewModel
                    }
                    else if (WhatSearch == "t")
                    {
-                       Answer = $"{WhatSearch} = v / S => {V / S}";
+                       Answer = $"{WhatSearch} = S / v => {S / V}";
                    }
                }));
 
@@ -52,61 +52,61 @@ namespace PhysicsCalculator.ViewModel
                (findParamCommand = new RelayCommand(obj =>
                {
                    if (WhatSearch == "v")
-                   {
-                       IsEnabledV = true;
-                       IsEnabledS = false;
-                       IsEnabledT = false;
+                   {  
+                       IsCollapsedV = "Collapsed";
+                       IsCollapsedS = "Visible";
+                       IsCollapsedT = "Visible";
                    }
                    else if (WhatSearch == "S")
-                   {
-                       IsEnabledV = false;
-                       IsEnabledS = true;
-                       IsEnabledT = false;
+                   {  
+                       IsCollapsedV = "Visible";
+                       IsCollapsedS = "Collapsed";
+                       IsCollapsedT = "Visible";
                    }
                    else if (WhatSearch == "t")
-                   {
-                       IsEnabledV = false;
-                       IsEnabledS = false;
-                       IsEnabledT = true;
+                   { 
+                       IsCollapsedV = "Visible";
+                       IsCollapsedS = "Visible";
+                       IsCollapsedT = "Collapsed";
                    }
                }));
 
-        private bool _isEnabledV;
-        public bool IsEnabledV
+        private string _isCollapsedV;
+        public string IsCollapsedV
         {
-            get { return _isEnabledV; }
+            get { return _isCollapsedV; }
 
             set
             {
-                _isEnabledV = value;
+                _isCollapsedV = value;
                 OnPropertyChanged();
             }
         }
 
-        private bool _isEnabledS;
-        public bool IsEnabledS
+        private string _isCollapsedS;
+        public string IsCollapsedS
         {
-            get { return _isEnabledS; }
+            get { return _isCollapsedS; }
 
             set
             {
-                _isEnabledS = value;
+                _isCollapsedS = value;
                 OnPropertyChanged();
             }
         }
 
-        private bool _isEnabledT;
-        public bool IsEnabledT
+        private string _isCollapsedT;
+        public string IsCollapsedT
         {
-            get { return _isEnabledT; }
+            get { return _isCollapsedT; }
 
             set
             {
-                _isEnabledT = value;
+                _isCollapsedT = value;
                 OnPropertyChanged();
             }
         }
-
+  
         private double v;
         public double V
         {

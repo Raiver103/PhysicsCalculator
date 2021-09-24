@@ -14,15 +14,15 @@
             <ColumnDefinition Width="167*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="14*"/>
-            <RowDefinition Height="14*"/>
-            <RowDefinition Height="14*"/>
-            <RowDefinition Height="14*"/>
-            <RowDefinition Height="31*"/>
-            <RowDefinition Height="116*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="105*"/>
+            <RowDefinition Height="197*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="chose what are you want to find"  Grid.Column="0" Grid.Row="0"/>
+        <TextBlock Text="chose what are you want to find"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,427,0"/>
 
         <ComboBox Grid.Row="1" Grid.Column="0" Margin="3,3,3,3" 
                               SelectedValue="{Binding WhatSearch}"
@@ -33,31 +33,32 @@
             Go to write velechins
         </Button>
 
-        <DockPanel  Grid.Column="2" Grid.Row="0">
-            <TextBlock Text="We Have:"/>
-        </DockPanel>
-        <DockPanel  Grid.Column="2" Margin="0,28,0,27" Grid.RowSpan="3">
-            <TextBlock Text="p:" Margin="0 0 5 0" ToolTip="Это плотность (кг/м3)"/>
-            <TextBox Text="{Binding P}" IsReadOnly="{Binding IsEnabledP}"/>
-        </DockPanel>
-        <DockPanel  Grid.Column="2" Grid.Row="1" Margin="0,28,0,0" Grid.RowSpan="2">
-            <TextBlock Text="m:" Margin="0 0 3 0" ToolTip="Это масса (кг)"/>
-            <TextBox  Text="{Binding M}" IsReadOnly="{Binding IsEnabledM}"/>
-        </DockPanel>
-        <DockPanel  Grid.Column="2" Grid.Row="3" Margin="0,1,0,0">
-            <TextBlock Text="V:" Margin="0 0 3 0" ToolTip="Это объем (м3)"/>
-            <TextBox Text="{Binding V}" IsReadOnly="{Binding IsEnabledV}"/>
-        </DockPanel>
+        <StackPanel Grid.Column="2" Grid.Row="0" Grid.RowSpan="4" Orientation="Vertical">
+            <TextBlock Text="We Have:" Margin="0 0 0 10"/>
+            <StackPanel >
+                <TextBlock Text="p:"  ToolTip="Это плотность (кг/м3)"/>
+                <TextBox Text="{Binding P}" Visibility="{Binding IsCollapsedP}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="m:" ToolTip="Это масса (кг)"/>
+                <TextBox  Text="{Binding M}" Visibility="{Binding IsCollapsedM}"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="V:"  ToolTip="Это объем (м3)"/>
+                <TextBox Text="{Binding V}" Visibility="{Binding IsCollapsedV}"/>
+            </StackPanel>
+        </StackPanel>
 
-        <StackPanel Grid.Row="4" Grid.Column="1">
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="0,0,168,0">
             <Button  Height="20" VerticalAlignment="Top" Command="{Binding SearchCommand}" Margin="170,3,170,0">
                 Go
             </Button>
-            
-            <TextBlock Text="{Binding Answer}" Margin="120,10,120,0"/> 
+
+            <TextBlock Text="{Binding Answer}" Margin="120,10,120,0"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" TextWrapping="Wrap">
+        <TextBlock Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="0,0,427,0" >
                         p = m / V - главная фомула которую можно проверить на практике
                         из нее иожно узнать  m = v * V и V = m / p
         </TextBlock>

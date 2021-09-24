@@ -36,21 +36,24 @@
                 Go to write velechins
             </Button>
 
-            <DockPanel  Grid.Column="2" Grid.Row="0">
-                <TextBlock Text="We Have:"/>
-            </DockPanel>
-            <DockPanel  Grid.Column="2" Margin="0,28,0,27" Grid.RowSpan="3">
-                <TextBlock Text="t:" Margin="0 0 5 0" ToolTip="Это время(секкунды)"/>
-                <TextBox Text="{Binding T}" IsReadOnly="{Binding IsEnabledT}"/>
-            </DockPanel>
-            <DockPanel  Grid.Column="2" Grid.Row="1" Margin="0,28,0,0" Grid.RowSpan="2">
-                <TextBlock Text="v:" Margin="0 0 3 0" ToolTip="Это скорорсть(км/ч)"/>
-                <TextBox  Text="{Binding V}" IsReadOnly="{Binding IsEnabledV}"/>
-            </DockPanel>
-            <DockPanel  Grid.Column="2" Grid.Row="3" Margin="0,1,0,0">
-                <TextBlock Text="S:" Margin="0 0 3 0" ToolTip="Это путь(метры)"/>
-                <TextBox Text="{Binding S}" IsReadOnly="{Binding IsEnabledS}"/>
-            </DockPanel>
+            <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="4">
+                <DockPanel>
+                    <TextBlock Text="We Have:"/>
+                </DockPanel>
+                <DockPanel Visibility="{Binding IsCollapsedT}">
+                    <TextBlock Text="t:" ToolTip="Это время(секкунды)"/>
+                    <TextBox Text="{Binding T}"/>
+                </DockPanel>
+                <DockPanel Visibility="{Binding IsCollapsedV}">
+                    <TextBlock Text="v:" ToolTip="Это скорорсть(км/ч)"/>
+                    <TextBox  Text="{Binding V}"/>
+                </DockPanel>
+                <DockPanel Visibility="{Binding IsCollapsedS}">
+                    <TextBlock Text="S:" ToolTip="Это путь(метры)"/>
+                    <TextBox Text="{Binding S}"/>
+                </DockPanel>
+            </StackPanel>
+
 
             <StackPanel Grid.Row="4" Grid.Column="1">
                 <Button  Height="20" VerticalAlignment="Top" Command="{Binding SearchCommand}" Margin="170,3,170,0">

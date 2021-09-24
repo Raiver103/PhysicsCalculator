@@ -23,9 +23,9 @@ namespace PhysicsCalculator.ViewModel
             {
                 "p", "m", "V"
             };
-            IsEnabledP = true;
-            IsEnabledM = true;
-            IsEnabledV = true;
+            IsCollapsedP = "Collapsed";
+            IsCollapsedM = "Collapsed";
+            IsCollapsedV = "Collapsed";
         }
 
         private RelayCommand searchCommand;
@@ -53,61 +53,58 @@ namespace PhysicsCalculator.ViewModel
                {
                    if (WhatSearch == "p")
                    {
-                       IsEnabledP = true;
-                       IsEnabledM = false;
-                       IsEnabledV = false;
+                       IsCollapsedP = "Collapsed";
+                       IsCollapsedM = "Visible";
+                       IsCollapsedV = "Visible";
                    }
                    else if (WhatSearch == "m")
                    {
-                       IsEnabledP = false;
-                       IsEnabledM = true;
-                       IsEnabledV = false;
+                       IsCollapsedV = "Visible";
+                       IsCollapsedM = "Collapsed";
+                       IsCollapsedV = "Visible";
                    }
                    else if (WhatSearch == "V")
                    {
-                       IsEnabledP = false;
-                       IsEnabledM = false;
-                       IsEnabledV = true;
+                       IsCollapsedP = "Visible";
+                       IsCollapsedM = "Visible";
+                       IsCollapsedV = "Collapsed";
                    }
                }));
 
-        private bool _isEnabledP;
-        public bool IsEnabledP
+        private string _isCollapsedP;
+        public string IsCollapsedP
         {
-            get { return _isEnabledP; }
+            get { return _isCollapsedP; }
 
             set
             {
-                _isEnabledP = value;
+                _isCollapsedP = value;
                 OnPropertyChanged();
             }
-
         }
 
-        private bool _isEnabledM;
-        public bool IsEnabledM
+        private string _isCollapsedM;
+        public string IsCollapsedM
         {
-            get { return _isEnabledM; }
+            get { return _isCollapsedM; }
 
             set
             {
-                _isEnabledM = value;
+                _isCollapsedM = value;
                 OnPropertyChanged();
             }
-
         }
 
-        private bool _isEnabledV;
-        public bool IsEnabledV
+        private string _isCollapsedV;
+        public string IsCollapsedV
         {
-            get { return _isEnabledV; }
+            get { return _isCollapsedV; }
 
             set
             {
-                _isEnabledV = value;
+                _isCollapsedV = value;
                 OnPropertyChanged();
             }
-
         }
 
         private double p;
