@@ -3,15 +3,15 @@
 
 
     <Style x:Key="MainButton" TargetType="Button">
-        <Setter Property="Background" Value="LightCoral"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="#000"/>
-        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontSize" Value="12"/>
         <Setter Property="Margin" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background }"
-                            CornerRadius="4"
+                            CornerRadius="6"
                             BorderThickness="1"
                             Padding="2"
                             BorderBrush="#000">
@@ -24,10 +24,72 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="White"/>
-                <Setter Property="Foreground" Value="#000"/>
+                <Setter Property="Background" Value="LightGray"/>
+                <Setter Property="Foreground" Value="Black"/>
             </Trigger>
         </Style.Triggers>
-    </Style> 
-    
+    </Style>
+
+    <Style x:Key="StartButton" TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="#000"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="3"/> 
+        <Setter Property="Template">
+            
+            <Setter.Value>
+                
+                <ControlTemplate TargetType="Button"  >
+                    <Border Background="{TemplateBinding Background }"
+                            CornerRadius="6"
+                            BorderThickness="2"
+                            Padding="2"
+                            BorderBrush="#000">
+
+                        <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="LightCoral"/>
+                <Setter Property="Foreground" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="StartSearch" TargetType="{x:Type TextBox}">
+        <Setter Property="MaxHeight" Value="25"/> 
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="border"
+                            CornerRadius="4"
+                            BorderBrush="#000"
+                            BorderThickness="1"
+                            Background="#fff"
+>
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                    Focusable="false"
+                                    HorizontalScrollBarVisibility="Visible"
+                                    VerticalScrollBarVisibility="Visible"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#909090"/>
+                            <Setter Property="Foreground" Value="LightCoral" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="BorderBrush" TargetName="border" Value="LightCoral"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>
