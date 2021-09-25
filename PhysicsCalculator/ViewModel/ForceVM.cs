@@ -30,80 +30,92 @@ namespace PhysicsCalculator.ViewModel
             IsCollapsedK = "Collapsed";
             IsCollapsedL = "Collapsed";
             IsCollapsedMY = "Collapsed";
+
+            SearchCommand = new RelayCommand<object>(SearchCommandExecuted, SearchCommandCanExecute);
+            FindParamCommand = new RelayCommand<object>(FindParamExecute, FindParamCanExecute);
         }
 
-        private RelayCommand searchCommand;
-        public ICommand SearchCommand => searchCommand ??
-               (searchCommand = new RelayCommand(obj =>
-               {
-                   if (WhatSearch == "F")
-                   {
-                       Answer = $"{WhatSearch} = m / V => {M * g}";
+        private ICommand searchCommand;
+        public ICommand SearchCommand { get { return searchCommand; } set { searchCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SearchCommand)));}}
 
-                   }
-                   else if (WhatSearch == "m")
-                   {
-                       Answer = $"{WhatSearch} = P * V => {F / g}";
-                   }
-                   else if (WhatSearch == "k")
-                   {
-                       Answer = $"{WhatSearch} = M / P => {F / L}";
-                   }
-                   else if (WhatSearch == "l")
-                   {
-                       Answer = $"{WhatSearch} = P * V => {F * K}";
-                   }
-                   else if (WhatSearch == "my")
-                   {
-                       Answer = $"{WhatSearch} = M / P => {F / F}";
-                   }
-               }));
+        private void SearchCommandExecuted(object obj)
+        {
+            if (WhatSearch == "F")
+            {
+                Answer = $"{WhatSearch} = m / V => {M * g}";
 
-        private RelayCommand findParamCommand;
-        public ICommand FindParamCommand => findParamCommand ??
-               (findParamCommand = new RelayCommand(obj =>
-               {
-                   if (WhatSearch == "F")
-                   {
-                       IsCollapsedF = "Collapsed";
-                       IsCollapsedM = "Collapsed";
-                       IsCollapsedK = "Collapsed";
-                       IsCollapsedL = "Collapsed";
-                       IsCollapsedMY = "Collapsed";
-                   }
-                   else if (WhatSearch == "m")
-                   {
-                       IsCollapsedF = "Collapsed";
-                       IsCollapsedM = "Collapsed";
-                       IsCollapsedK = "Collapsed";
-                       IsCollapsedL = "Collapsed";
-                       IsCollapsedMY = "Collapsed";
-                   }
-                   else if (WhatSearch == "k")
-                   {
-                       IsCollapsedF = "Collapsed";
-                       IsCollapsedM = "Collapsed";
-                       IsCollapsedK = "Collapsed";
-                       IsCollapsedL = "Collapsed";
-                       IsCollapsedMY = "Collapsed";
-                   }
-                   else if (WhatSearch == "l")
-                   {
-                       IsCollapsedF = "Collapsed";
-                       IsCollapsedM = "Collapsed";
-                       IsCollapsedK = "Collapsed";
-                       IsCollapsedL = "Collapsed";
-                       IsCollapsedMY = "Collapsed";
-                   }
-                   else if (WhatSearch == "my")
-                   {
-                       IsCollapsedF = "Collapsed";
-                       IsCollapsedM = "Collapsed";
-                       IsCollapsedK = "Collapsed";
-                       IsCollapsedL = "Collapsed";
-                       IsCollapsedMY = "Collapsed";
-                   }
-               }));
+            }
+            else if (WhatSearch == "m")
+            {
+                Answer = $"{WhatSearch} = P * V => {F / g}";
+            }
+            else if (WhatSearch == "k")
+            {
+                Answer = $"{WhatSearch} = M / P => {F / L}";
+            }
+            else if (WhatSearch == "l")
+            {
+                Answer = $"{WhatSearch} = P * V => {F * K}";
+            }
+            else if (WhatSearch == "my")
+            {
+                Answer = $"{WhatSearch} = M / P => {F / F}";
+            }
+        }
+        private bool SearchCommandCanExecute(object obj)
+        {
+            return true;
+        }
+
+        private ICommand findParamCommand;
+        public ICommand FindParamCommand { get { return findParamCommand; } set { findParamCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FindParamCommand))); } }
+        private void FindParamExecute(object obj)
+        {
+            if (WhatSearch == "F")
+            {
+                IsCollapsedF = "Collapsed";
+                IsCollapsedM = "Collapsed";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
+                IsCollapsedMY = "Collapsed";
+            }
+            else if (WhatSearch == "m")
+            {
+                IsCollapsedF = "Collapsed";
+                IsCollapsedM = "Collapsed";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
+                IsCollapsedMY = "Collapsed";
+            }
+            else if (WhatSearch == "k")
+            {
+                IsCollapsedF = "Collapsed";
+                IsCollapsedM = "Collapsed";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
+                IsCollapsedMY = "Collapsed";
+            }
+            else if (WhatSearch == "l")
+            {
+                IsCollapsedF = "Collapsed";
+                IsCollapsedM = "Collapsed";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
+                IsCollapsedMY = "Collapsed";
+            }
+            else if (WhatSearch == "my")
+            {
+                IsCollapsedF = "Collapsed";
+                IsCollapsedM = "Collapsed";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
+                IsCollapsedMY = "Collapsed";
+            }
+        }
+        private bool FindParamCanExecute(object obj)
+        {
+            return true;
+        }
 
         private string _isCollapsedF;
         public string IsCollapsedF

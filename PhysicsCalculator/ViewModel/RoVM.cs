@@ -26,50 +26,61 @@ namespace PhysicsCalculator.ViewModel
             IsCollapsedP = "Collapsed";
             IsCollapsedM = "Collapsed";
             IsCollapsedV = "Collapsed";
+
+            SearchCommand = new RelayCommand<object>(SearchCommandExecuted, SearchCommandCanExecute);
+            FindParamCommand = new RelayCommand<object>(FindParamExecute, FindParamCanExecute);
+        }
+        private ICommand searchCommand;
+        public ICommand SearchCommand { get { return searchCommand; } set { searchCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SearchCommand))); } }
+
+        private void SearchCommandExecuted(object obj)
+        {
+            if (WhatSearch == "p")
+            {
+                Answer = $"{WhatSearch} = m / V => {M / V}";
+
+            }
+            else if (WhatSearch == "m")
+            {
+                Answer = $"{WhatSearch} = P * V => {P * V}";
+            }
+            else if (WhatSearch == "V")
+            {
+                Answer = $"{WhatSearch} = M / P => {M / P}";
+            }
+        }
+        private bool SearchCommandCanExecute(object obj)
+        {
+            return true;
         }
 
-        private RelayCommand searchCommand;
-        public ICommand SearchCommand => searchCommand ??
-               (searchCommand = new RelayCommand(obj =>
-               {
-                   if (WhatSearch == "p")
-                   {
-                       Answer = $"{WhatSearch} = m / V => {M / V}";
-
-                   }
-                   else if (WhatSearch == "m")
-                   {
-                       Answer = $"{WhatSearch} = P * V => {P * V}";
-                   }
-                   else if (WhatSearch == "V")
-                   {
-                       Answer = $"{WhatSearch} = M / P => {M / P}";
-                   }
-               }));
-
-        private RelayCommand findParamCommand;
-        public ICommand FindParamCommand => findParamCommand ??
-               (findParamCommand = new RelayCommand(obj =>
-               {
-                   if (WhatSearch == "p")
-                   {
-                       IsCollapsedP = "Collapsed";
-                       IsCollapsedM = "Visible";
-                       IsCollapsedV = "Visible";
-                   }
-                   else if (WhatSearch == "m")
-                   {
-                       IsCollapsedV = "Visible";
-                       IsCollapsedM = "Collapsed";
-                       IsCollapsedV = "Visible";
-                   }
-                   else if (WhatSearch == "V")
-                   {
-                       IsCollapsedP = "Visible";
-                       IsCollapsedM = "Visible";
-                       IsCollapsedV = "Collapsed";
-                   }
-               }));
+        private ICommand findParamCommand;
+        public ICommand FindParamCommand { get { return findParamCommand; } set { findParamCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FindParamCommand))); } }
+        private void FindParamExecute(object obj)
+        {
+            if (WhatSearch == "p")
+            {
+                IsCollapsedP = "Collapsed";
+                IsCollapsedM = "Visible";
+                IsCollapsedV = "Visible";
+            }
+            else if (WhatSearch == "m")
+            {
+                IsCollapsedV = "Visible";
+                IsCollapsedM = "Collapsed";
+                IsCollapsedV = "Visible";
+            }
+            else if (WhatSearch == "V")
+            {
+                IsCollapsedP = "Visible";
+                IsCollapsedM = "Visible";
+                IsCollapsedV = "Collapsed";
+            }
+        }
+        private bool FindParamCanExecute(object obj)
+        {
+            return true;
+        } 
 
         private string _isCollapsedP;
         public string IsCollapsedP

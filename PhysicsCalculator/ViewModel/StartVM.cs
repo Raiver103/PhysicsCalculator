@@ -19,14 +19,14 @@ namespace PhysicsCalculator.ViewModel
         {
             this.navigation = navigation;
         }
-
+        //do
         private RelayCommand goToVelocitiePage;
         public ICommand GoToVelocitiePage => goToVelocitiePage ??
                (goToVelocitiePage = new RelayCommand(obj =>
                {
                    navigation.Navigate(new VelocitiePage());
-               })); 
-        
+               }));
+        //do
         private RelayCommand goToRoPage;
         public ICommand GoToRoPage => goToRoPage ??
                (goToRoPage = new RelayCommand(obj =>

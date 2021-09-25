@@ -33,8 +33,8 @@ namespace PhysicsCalculator.ViewModel
                 currentPage = value;
                 OnPropertyChanged();
             }
-        }  
-          
+        }
+        //do
         private RelayCommand goToBack;
         public ICommand GoToBack => goToBack ??
                (goToBack = new RelayCommand(obj =>

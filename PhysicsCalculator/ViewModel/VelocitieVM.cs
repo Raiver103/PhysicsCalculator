@@ -14,11 +14,11 @@ using System.Windows.Input;
 namespace PhysicsCalculator.ViewModel
 {
     class VelocitieVM : INotifyPropertyChanged
-    { 
+    {
 
         private PageService navigation;
         public VelocitieVM(PageService navigation)
-        { 
+        {
             this.navigation = navigation; Search = new ObservableCollection<string>()
             {
                 "v", "S", "t"
@@ -26,50 +26,67 @@ namespace PhysicsCalculator.ViewModel
             IsCollapsedV = "Collapsed";
             IsCollapsedS = "Collapsed";
             IsCollapsedT = "Collapsed";
+
+            SearchCommand = new RelayCommand<object>(SearchCommandExecuted, SearchCommandCanExecute);
+            FindParamCommand = new RelayCommand<object>(FindParamExecute, FindParamCanExecute);
         }
 
-        private RelayCommand searchCommand;
-        public ICommand SearchCommand => searchCommand ??
-               (searchCommand = new RelayCommand(obj =>
-               {
-                   if (WhatSearch == "v")
-                   {
-                       Answer = $"{WhatSearch} = S / t => {S / T}";
+        private ICommand searchCommand;
+        public ICommand SearchCommand { get { return searchCommand; } set { searchCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SearchCommand))); } }
 
-                   }
-                   else if (WhatSearch == "S")
-                   {
-                       Answer = $"{WhatSearch} = v * t => {V * T}";
-                   }
-                   else if (WhatSearch == "t")
-                   {
-                       Answer = $"{WhatSearch} = S / v => {S / V}";
-                   }
-               }));
+        private void SearchCommandExecuted(object obj)
+        {
 
-        private RelayCommand findParamCommand;
-        public ICommand FindParamCommand => findParamCommand ??
-               (findParamCommand = new RelayCommand(obj =>
-               {
-                   if (WhatSearch == "v")
-                   {  
-                       IsCollapsedV = "Collapsed";
-                       IsCollapsedS = "Visible";
-                       IsCollapsedT = "Visible";
-                   }
-                   else if (WhatSearch == "S")
-                   {  
-                       IsCollapsedV = "Visible";
-                       IsCollapsedS = "Collapsed";
-                       IsCollapsedT = "Visible";
-                   }
-                   else if (WhatSearch == "t")
-                   { 
-                       IsCollapsedV = "Visible";
-                       IsCollapsedS = "Visible";
-                       IsCollapsedT = "Collapsed";
-                   }
-               }));
+            if (WhatSearch == "v")
+            {
+                Answer = $"{WhatSearch} = S / t => {S / T}";
+
+            }
+            else if (WhatSearch == "S")
+            {
+                Answer = $"{WhatSearch} = v * t => {V * T}";
+            }
+            else if (WhatSearch == "t")
+            {
+                Answer = $"{WhatSearch} = S / v => {S / V}";
+            }
+
+        }
+        private bool SearchCommandCanExecute(object obj)
+        {
+            return true;
+        }
+
+        private ICommand findParamCommand;
+        public ICommand FindParamCommand { get { return findParamCommand; } set { findParamCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FindParamCommand))); } }
+        private void FindParamExecute(object obj)
+        {
+
+            if (WhatSearch == "v")
+            {
+                IsCollapsedV = "Collapsed";
+                IsCollapsedS = "Visible";
+                IsCollapsedT = "Visible";
+            }
+            else if (WhatSearch == "S")
+            {
+                IsCollapsedV = "Visible";
+                IsCollapsedS = "Collapsed";
+                IsCollapsedT = "Visible";
+            }
+            else if (WhatSearch == "t")
+            {
+                IsCollapsedV = "Visible";
+                IsCollapsedS = "Visible";
+                IsCollapsedT = "Collapsed";
+            }
+
+        }
+        private bool FindParamCanExecute(object obj)
+        {
+            return true;
+        }
+
 
         private string _isCollapsedV;
         public string IsCollapsedV
@@ -106,7 +123,7 @@ namespace PhysicsCalculator.ViewModel
                 OnPropertyChanged();
             }
         }
-  
+
         private double v;
         public double V
         {
