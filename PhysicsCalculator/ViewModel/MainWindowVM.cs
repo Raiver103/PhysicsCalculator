@@ -22,6 +22,8 @@ namespace PhysicsCalculator.ViewModel
             navigation.OnPageChanged += page => CurrentPage = page;
             navigation.Navigate(new StartPage());
             this.navigation = navigation;
+
+            GoToBack = new RelayCommand<object>(GoToBackExecute, GoToBackCanExecute);
         } 
 
         private Page currentPage;
@@ -34,14 +36,19 @@ namespace PhysicsCalculator.ViewModel
                 OnPropertyChanged();
             }
         }
-        //do
-        private RelayCommand goToBack;
-        public ICommand GoToBack => goToBack ??
-               (goToBack = new RelayCommand(obj =>
-               {
-                   navigation.GoToBack();
-               }));
-         
+
+        private ICommand goToBack;
+        public ICommand GoToBack { get { return goToBack; } set { goToBack = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GoToBack))); } }
+
+        private void GoToBackExecute(object obj)
+        {
+            navigation.GoToBack();
+        }
+        private bool GoToBackCanExecute(object obj)
+        {
+            return true;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

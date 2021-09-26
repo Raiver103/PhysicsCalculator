@@ -18,21 +18,33 @@ namespace PhysicsCalculator.ViewModel
         public StartVM(PageService navigation)
         {
             this.navigation = navigation;
+            GoToRoPage = new RelayCommand<object>(GoToRoPageExecute, GoToRoPageCanExecute);
+            GoToVelocitiePage = new RelayCommand<object>(GoToVelocitiePageExecute, GoToVelocitiePageCanExecute);
         }
-        //do
-        private RelayCommand goToVelocitiePage;
-        public ICommand GoToVelocitiePage => goToVelocitiePage ??
-               (goToVelocitiePage = new RelayCommand(obj =>
-               {
-                   navigation.Navigate(new VelocitiePage());
-               }));
-        //do
-        private RelayCommand goToRoPage;
-        public ICommand GoToRoPage => goToRoPage ??
-               (goToRoPage = new RelayCommand(obj =>
-               {
-                   navigation.Navigate(new RoPage());
-               }));
+          
+        private ICommand goToVelocitiePage;
+        public ICommand GoToVelocitiePage { get { return goToVelocitiePage; } set { goToVelocitiePage = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(goToVelocitiePage))); } }
+
+        private void GoToVelocitiePageExecute(object obj)
+        {
+            navigation.Navigate(new VelocitiePage());
+        }
+        private bool GoToVelocitiePageCanExecute(object obj)
+        {
+            return true;
+        }
+
+        private ICommand goToRoPage;
+        public ICommand GoToRoPage { get { return goToRoPage; } set { goToRoPage = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GoToRoPage))); }}
+
+        private void GoToRoPageExecute(object obj)
+        {
+            navigation.Navigate(new RoPage());
+        }
+        private bool GoToRoPageCanExecute(object obj)
+        {
+            return true;
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

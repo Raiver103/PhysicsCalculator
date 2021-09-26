@@ -60,17 +60,17 @@
     </Style>
 
     <Style x:Key="StartSearch" TargetType="{x:Type TextBox}">
-        <Setter Property="MaxHeight" Value="25"/> 
-        
+        <Setter Property="MaxHeight" Value="35"/> 
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border x:Name="border"
-                            CornerRadius="4"
+                            CornerRadius="10"
                             BorderBrush="#000"
                             BorderThickness="1"
                             Background="#fff"
->
+                            Padding="3">
                         <ScrollViewer x:Name="PART_ContentHost"
                                     Focusable="false"
                                     HorizontalScrollBarVisibility="Visible"
