@@ -9,6 +9,15 @@
       DataContext="{Binding Source={StaticResource VmLocator}, Path=VelocitieVM}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="V">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/MainDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -18,41 +27,42 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="22*"/>
+            <RowDefinition Height="20*"/>
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Column="0" 
                        Grid.Row="0"
                        Margin="5">
 
-            <TextBlock DockPanel.Dock="Top" Text="chose what are you want to find" />
+            <TextBlock DockPanel.Dock="Top" Text="Chose what are you want to find" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
 
             <ComboBox DockPanel.Dock="Top"  SelectedValue="{Binding WhatSearch}"
-                          ItemsSource="{Binding Search}"
-                          Margin="0 10 0 0"
-                          MaxHeight="30"/>
+                      ItemsSource="{Binding Search}"
+                      Margin="0 10 0 0"
+                      MaxHeight="30"
+                      Style="{StaticResource  x}"/>
 
-            <Button DockPanel.Dock="Bottom"  Command="{Binding FindParamCommand}" MaxHeight="40" MaxWidth="175">
+            <Button DockPanel.Dock="Bottom"  Command="{Binding FindParamCommand}" Margin="30 15" MaxHeight="65" Style="{StaticResource CalculateButton}">
                 Go to write velechins
             </Button>
         </DockPanel>
 
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
-            <TextBlock Text="We Have:"/>
-            <DockPanel Visibility="{Binding IsCollapsedT}">
-                <TextBlock Text="t:" ToolTip="Это время(секкунды)"/>
-                <TextBox Text="{Binding T}"/>
+            <TextBlock Text="We Have:" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
+            <DockPanel Visibility="{Binding IsCollapsedT}" Margin="0 2">
+                <TextBlock Text="t:" ToolTip="Это время(секкунды)" FontSize="14"/>
+                <TextBox Text="{Binding T}" FontSize="14"/>
             </DockPanel>
-            <DockPanel Visibility="{Binding IsCollapsedV}">
-                <TextBlock Text="v:" ToolTip="Это скорорсть(км/ч)"/>
-                <TextBox  Text="{Binding V}"/>
+            <DockPanel Visibility="{Binding IsCollapsedV}" Margin="0 2">
+                <TextBlock Text="v:" ToolTip="Это скорорсть(км/ч)" FontSize="14"/>
+                <TextBox  Text="{Binding V}" FontSize="14"/>
             </DockPanel>
-            <DockPanel Visibility="{Binding IsCollapsedS}">
-                <TextBlock Text="S:" ToolTip="Это путь(метры)"/>
-                <TextBox Text="{Binding S}"/>
+            <DockPanel Visibility="{Binding IsCollapsedS}" Margin="0 2">
+                <TextBlock Text="S:" ToolTip="Это путь(метры)" FontSize="14"/>
+                <TextBox Text="{Binding S}" FontSize="14"/>
             </DockPanel>
-            <Button  Height="20" VerticalAlignment="Top" Command="{Binding SearchCommand}"  MaxHeight="40" MaxWidth="175">
+            <Button VerticalAlignment="Top" Command="{Binding SearchCommand}" Margin="30 2" MinHeight="26" Style="{StaticResource CalculateButton}">
                 Go
             </Button>
         </StackPanel>
@@ -60,7 +70,7 @@
 
         <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" Text="{Binding Answer}"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Margin="5">
+        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5"  TextWrapping="Wrap" FontSize="13 " FontWeight="Medium">
                         v = S / t - главная фомула которую можно проверить на практике
                         из нее иожно узнать  S = v * t и t = S / v
         </TextBlock>
