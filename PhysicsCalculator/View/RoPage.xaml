@@ -7,60 +7,88 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RoPage">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/MainDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="203*"/>
-            <ColumnDefinition Width="424*"/>
-            <ColumnDefinition Width="167*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="52*"/>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="197*"/>
+            <RowDefinition Height="10*"/> 
+            <RowDefinition Height="22*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="chose what are you want to find"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,427,0"/>
+        <DockPanel Grid.Column="0" 
+                   Grid.Row="0"
+                   Margin="5">
 
-        <ComboBox Grid.Row="1" Grid.Column="0" Margin="3,3,3,3" 
-                              SelectedValue="{Binding WhatSearch}"
-                              ItemsSource="{Binding Search}">
-        </ComboBox>
+            <TextBlock Text="Chose what are you want to find" 
+                       DockPanel.Dock="Top" 
+                       TextWrapping="Wrap" 
+                       FontSize="16" 
+                       FontWeight="Medium"/>
 
-        <Button Grid.Column="0" Grid.Row="2" Margin="42,2,41,2" Command="{Binding FindParamCommand}">
-            Go to write velechins
-        </Button>
+            <ComboBox DockPanel.Dock="Top"  SelectedValue="{Binding WhatSearch}"
+                      ItemsSource="{Binding Search}"
+                      Margin="0 10 0 0"
+                      MaxHeight="30"
+                      Style="{StaticResource x}"/>
 
-        <StackPanel Grid.Column="2" Grid.Row="0" Grid.RowSpan="4" Orientation="Vertical">
-            <TextBlock Text="We Have:" Margin="0 0 0 10"/>
-            <StackPanel >
-                <TextBlock Text="p:"  ToolTip="Это плотность (кг/м3)"/>
-                <TextBox Text="{Binding P}" Visibility="{Binding IsCollapsedP}"/>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="m:" ToolTip="Это масса (кг)"/>
-                <TextBox  Text="{Binding M}" Visibility="{Binding IsCollapsedM}"/>
-            </StackPanel>
-            <StackPanel>
-                <TextBlock Text="V:"  ToolTip="Это объем (м3)"/>
-                <TextBox Text="{Binding V}" Visibility="{Binding IsCollapsedV}"/>
-            </StackPanel>
-        </StackPanel>
-
-
-        <StackPanel Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="0,0,168,0">
-            <Button  Height="20" VerticalAlignment="Top" Command="{Binding SearchCommand}" Margin="170,3,170,0">
+            <Button DockPanel.Dock="Bottom" 
+                    Margin="30 15" 
+                    MaxHeight="65" 
+                    Style="{StaticResource CalculateButton}" 
+                    Command="{Binding FindParamCommand}">
+                Go to write velechins
+            </Button>
+        </DockPanel>
+         
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5" Visibility="{Binding IsCollapsedAll}">
+            <TextBlock Text="We Have:" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
+            <DockPanel Visibility="{Binding IsCollapsedP}" Margin="0 2">
+                <TextBlock Text="t:" ToolTip="Это плотность(кг/м3)" FontSize="14"/>
+                <TextBox Text="{Binding P}" FontSize="14"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding IsCollapsedM}" Margin="0 2">
+                <TextBlock Text="v:" ToolTip="Это масса(кг)" FontSize="14"/>
+                <TextBox Text="{Binding M}" FontSize="14"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding IsCollapsedV}" Margin="0 2">
+                <TextBlock Text="S:" ToolTip="Это обьем(м3)" FontSize="14"/>
+                <TextBox Text="{Binding V}" FontSize="14"/>
+            </DockPanel>
+            <Button VerticalAlignment="Top" 
+                    Margin="30 2" 
+                    MinHeight="26" 
+                    Style="{StaticResource CalculateButton}" 
+                    Command="{Binding SearchCommand}">
                 Go
             </Button>
-
-            <TextBlock Text="{Binding Answer}" Margin="120,10,120,0"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Grid.RowSpan="2" TextWrapping="Wrap" Grid.ColumnSpan="2" Margin="0,0,427,0" >
-                        p = m / V - главная фомула которую можно проверить на практике
-                        из нее иожно узнать  m = v * V и V = m / p
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0" 
+                   TextWrapping="Wrap"
+                   FontSize="14">
+               p = m / V - главная фомула которую можно проверить на практике
+               из нее иожно узнать  m = v * V и V = m / p
+        </TextBlock>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="2" 
+                   TextWrapping="Wrap"
+                   FontSize="14"
+                   Text="{Binding Answer}">
+            
         </TextBlock>
     </Grid>
 </Page>

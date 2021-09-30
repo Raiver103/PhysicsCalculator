@@ -23,7 +23,7 @@ namespace PhysicsCalculator.ViewModel
 
             Search = new ObservableCollection<string>()
             {
-                "F", "m", "k", "l", "my"
+                "Fтяж", "Fтр", "m", "k", "l", "my"
             };
             IsCollapsedF = "Collapsed";
             IsCollapsedM = "Collapsed";
@@ -31,100 +31,142 @@ namespace PhysicsCalculator.ViewModel
             IsCollapsedL = "Collapsed";
             IsCollapsedMY = "Collapsed";
 
+            IsCollapsedAll = "Collapsed";
+
             SearchCommand = new RelayCommand<object>(SearchCommandExecuted, SearchCommandCanExecute);
             FindParamCommand = new RelayCommand<object>(FindParamExecute, FindParamCanExecute);
         }
 
         private ICommand searchCommand;
-        public ICommand SearchCommand { get { return searchCommand; } set { searchCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SearchCommand)));}}
+        public ICommand SearchCommand { get { return searchCommand; } 
+            set { searchCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SearchCommand)));}}
 
         private void SearchCommandExecuted(object obj)
         {
-            if (WhatSearch == "F")
+            if (WhatSearch == "Fтяж")
             {
                 Answer = $"{WhatSearch} = m / V => {M * g}";
-
+            }
+            else if (WhatSearch == "Fтр")
+            {
+                Answer = $"{WhatSearch} = m / V => {M * g}";
             }
             else if (WhatSearch == "m")
             {
-                Answer = $"{WhatSearch} = P * V => {F / g}";
+                Answer = $"{WhatSearch} = F / g => {Ftg / g}";
             }
             else if (WhatSearch == "k")
             {
-                Answer = $"{WhatSearch} = M / P => {F / L}";
+                Answer = $"{WhatSearch} = M / P => {Ftg / L}";
             }
             else if (WhatSearch == "l")
             {
-                Answer = $"{WhatSearch} = P * V => {F * K}";
+                Answer = $"{WhatSearch} = P * V => {Ftg / K}";
             }
             else if (WhatSearch == "my")
             {
-                Answer = $"{WhatSearch} = M / P => {F / F}";
+                Answer = $"{WhatSearch} = M / P => {Ftg / Ftr}";
             }
         }
+
         private bool SearchCommandCanExecute(object obj)
         {
             return true;
         }
 
         private ICommand findParamCommand;
-        public ICommand FindParamCommand { get { return findParamCommand; } set { findParamCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FindParamCommand))); } }
+        public ICommand FindParamCommand { get { return findParamCommand; } 
+            set { findParamCommand = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FindParamCommand))); } }
+
         private void FindParamExecute(object obj)
         {
-            if (WhatSearch == "F")
+            if (WhatSearch == "Fтяж")
             {
                 IsCollapsedF = "Collapsed";
+                IsCollapsedM = "Visible";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
+                IsCollapsedMY = "Collapsed";
+
+                IsCollapsedAll = "Visible";
+            }
+            else if (WhatSearch == "Fтр")
+            {
+                IsCollapsedF = "Visible";
                 IsCollapsedM = "Collapsed";
                 IsCollapsedK = "Collapsed";
                 IsCollapsedL = "Collapsed";
                 IsCollapsedMY = "Collapsed";
+
+                IsCollapsedAll = "Visible";
             }
             else if (WhatSearch == "m")
             {
-                IsCollapsedF = "Collapsed";
+                IsCollapsedF = "Visible";
                 IsCollapsedM = "Collapsed";
                 IsCollapsedK = "Collapsed";
                 IsCollapsedL = "Collapsed";
                 IsCollapsedMY = "Collapsed";
+
+                IsCollapsedAll = "Visible";
             }
             else if (WhatSearch == "k")
             {
-                IsCollapsedF = "Collapsed";
+                IsCollapsedF = "Visible";
                 IsCollapsedM = "Collapsed";
                 IsCollapsedK = "Collapsed";
-                IsCollapsedL = "Collapsed";
+                IsCollapsedL = "Visible";
                 IsCollapsedMY = "Collapsed";
+
+                IsCollapsedAll = "Visible";
             }
             else if (WhatSearch == "l")
             {
-                IsCollapsedF = "Collapsed";
+                IsCollapsedF = "Visible";
                 IsCollapsedM = "Collapsed";
-                IsCollapsedK = "Collapsed";
+                IsCollapsedK = "Visible";
                 IsCollapsedL = "Collapsed";
                 IsCollapsedMY = "Collapsed";
+                 
+                IsCollapsedAll = "Visible";
             }
             else if (WhatSearch == "my")
             {
-                IsCollapsedF = "Collapsed";
-                IsCollapsedM = "Collapsed";
-                IsCollapsedK = "Collapsed";
-                IsCollapsedL = "Collapsed";
+                IsCollapsedF = "Visible";
+                IsCollapsedM = "Visible";
+                IsCollapsedK = "Visible";
+                IsCollapsedL = "Visible";
                 IsCollapsedMY = "Collapsed";
+                 
+                IsCollapsedAll = "Visible";
             }
         }
+
         private bool FindParamCanExecute(object obj)
         {
             return true;
         }
 
-        private string _isCollapsedF;
+        private string _isCollapsedFtg;
         public string IsCollapsedF
         {
-            get { return _isCollapsedF; }
+            get { return _isCollapsedFtg; }
 
             set
             {
-                _isCollapsedF = value;
+                _isCollapsedFtg = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _isCollapsedFtr;
+        public string IsCollapsedFtr
+        {
+            get { return _isCollapsedFtr; }
+
+            set
+            {
+                _isCollapsedFtr = value;
                 OnPropertyChanged();
             }
         }
@@ -176,13 +218,37 @@ namespace PhysicsCalculator.ViewModel
                 OnPropertyChanged();
             }
         }
-        private double f;
-        public double F
+
+        private string _isCollapsedAll;
+        public string IsCollapsedAll
         {
-            get { return f; }
+            get { return _isCollapsedAll; }
+
             set
             {
-                f = value;
+                _isCollapsedAll = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double ftg;
+        public double Ftg
+        {
+            get { return ftg; }
+            set
+            {
+                ftg = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private double ftr;
+        public double Ftr
+        {
+            get { return ftr; }
+            set
+            {
+                ftr = value;
                 OnPropertyChanged();
             }
         }
@@ -221,7 +287,7 @@ namespace PhysicsCalculator.ViewModel
         }
 
         private double my;
-        public double My 
+        public double MY 
         {
             get { return my; }
             set

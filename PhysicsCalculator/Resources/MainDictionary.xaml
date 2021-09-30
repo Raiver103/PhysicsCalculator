@@ -33,8 +33,8 @@
     <Style x:Key="StartButton" TargetType="Button">
         <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="#000"/>
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Margin" Value="3"/> 
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="4"/> 
         <Setter Property="Template">
             
             <Setter.Value>

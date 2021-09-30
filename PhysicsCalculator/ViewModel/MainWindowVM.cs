@@ -44,6 +44,7 @@ namespace PhysicsCalculator.ViewModel
         {
             navigation.GoToBack();
         }
+
         private bool GoToBackCanExecute(object obj)
         {
             return true;

@@ -31,24 +31,32 @@
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Column="0" 
-                       Grid.Row="0"
-                       Margin="5">
+                   Grid.Row="0"
+                   Margin="5">
 
-            <TextBlock DockPanel.Dock="Top" Text="Chose what are you want to find" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
+            <TextBlock Text="Chose what are you want to find" 
+                       DockPanel.Dock="Top" 
+                       TextWrapping="Wrap" 
+                       FontSize="16" 
+                       FontWeight="Medium"/>
 
             <ComboBox DockPanel.Dock="Top"  SelectedValue="{Binding WhatSearch}"
                       ItemsSource="{Binding Search}"
                       Margin="0 10 0 0"
                       MaxHeight="30"
-                      Style="{StaticResource  x}"/>
+                      Style="{StaticResource x}"/>
 
-            <Button DockPanel.Dock="Bottom"  Command="{Binding FindParamCommand}" Margin="30 15" MaxHeight="65" Style="{StaticResource CalculateButton}">
+            <Button DockPanel.Dock="Bottom" 
+                    Margin="30 15" 
+                    MaxHeight="65" 
+                    Style="{StaticResource CalculateButton}" 
+                    Command="{Binding FindParamCommand}">
                 Go to write velechins
             </Button>
         </DockPanel>
 
 
-        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5" Visibility="{Binding IsCollapsedAll}">
             <TextBlock Text="We Have:" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
             <DockPanel Visibility="{Binding IsCollapsedT}" Margin="0 2">
                 <TextBlock Text="t:" ToolTip="Это время(секкунды)" FontSize="14"/>
@@ -56,26 +64,36 @@
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedV}" Margin="0 2">
                 <TextBlock Text="v:" ToolTip="Это скорорсть(км/ч)" FontSize="14"/>
-                <TextBox  Text="{Binding V}" FontSize="14"/>
+                <TextBox Text="{Binding V}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedS}" Margin="0 2">
                 <TextBlock Text="S:" ToolTip="Это путь(метры)" FontSize="14"/>
                 <TextBox Text="{Binding S}" FontSize="14"/>
             </DockPanel>
-            <Button VerticalAlignment="Top" Command="{Binding SearchCommand}" Margin="30 2" MinHeight="26" Style="{StaticResource CalculateButton}">
+            <Button VerticalAlignment="Top" 
+                    Margin="30 2" 
+                    MinHeight="26" 
+                    Style="{StaticResource CalculateButton}" 
+                    Command="{Binding SearchCommand}">
                 Go
             </Button>
         </StackPanel>
 
 
-        <TextBlock Margin="5" Grid.Row="0" Grid.Column="2" Text="{Binding Answer}"/>
+        <TextBlock Margin="5" 
+                   Grid.Row="0" 
+                   Grid.Column="2" 
+                   FontSize="14"
+                   Text="{Binding Answer}"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="5"  TextWrapping="Wrap" FontSize="13 " FontWeight="Medium">
+        <TextBlock Grid.Row="1" 
+                   Grid.Column="0" 
+                   Margin="5"  
+                   TextWrapping="Wrap" 
+                   FontSize="13 " 
+                   FontWeight="Medium">
                         v = S / t - главная фомула которую можно проверить на практике
                         из нее иожно узнать  S = v * t и t = S / v
         </TextBlock>
-
-
-
     </Grid>
 </Page>

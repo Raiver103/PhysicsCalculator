@@ -13,5 +13,6 @@ namespace PhysicsCalculator
         public VelocitieVM VelocitieVM => Dependency.Resolve<VelocitieVM>();
         public StartVM StartVM => Dependency.Resolve<StartVM>();
         public RoVM RoVM => Dependency.Resolve<RoVM>();
+        public ForceVM ForceVM => Dependency.Resolve<ForceVM>();
     }
 }

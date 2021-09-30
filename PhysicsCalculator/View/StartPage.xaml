@@ -35,40 +35,40 @@
         
         <TextBox Style="{StaticResource StartSearch}" Grid.Column="1" Grid.ColumnSpan="3" Margin="5"/>
 
-        <Button Style="{StaticResource StartButton}"  Grid.Row="1" Grid.Column="0" Margin="4" Command="{Binding GoToVelocitiePage}">
+        <Button Style="{StaticResource StartButton}" Grid.Row="1" Grid.Column="0" Command="{Binding GoToVelocitiePage}">
             Cкороть, путь, впемя 
             (v, S, t) 
         </Button>
-        <Button Style="{StaticResource StartButton}" Grid.Row="1" Grid.Column="1" Margin="4" Command="{Binding GoToRoPage}">
+        <Button Style="{StaticResource StartButton}" Grid.Row="1" Grid.Column="1" Command="{Binding GoToRoPage}">
             Плотность, масса, объем 
             (p, m, V)
         </Button>
-        <Button Style="{StaticResource StartButton}"  Grid.Row="1" Grid.Column="2"> 
+        <Button Style="{StaticResource StartButton}" Grid.Row="1" Grid.Column="2" Command="{Binding GoToForcePage}"> 
             Сила тяжести, упругости, трения, вес тела 
             (F, P, g, N, my, k, |l|)
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="1" Grid.Column="3">
+        <Button Style="{StaticResource StartButton}" Grid.Row="1" Grid.Column="3">
             
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="1" Grid.Column="4">
+        <Button Style="{StaticResource StartButton}" Grid.Row="1" Grid.Column="4">
             
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="2" Grid.Column="0">
+        <Button Style="{StaticResource StartButton}" Grid.Row="2" Grid.Column="0">
             
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="2" Grid.Column="1">
+        <Button Style="{StaticResource StartButton}" Grid.Row="2" Grid.Column="1">
             
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="2" Grid.Column="2">
+        <Button Style="{StaticResource StartButton}" Grid.Row="2" Grid.Column="2">
             
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="2" Grid.Column="3">
+        <Button Style="{StaticResource StartButton}" Grid.Row="2" Grid.Column="3">
             
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="2" Grid.Column="4">
+        <Button Style="{StaticResource StartButton}" Grid.Row="2" Grid.Column="4">
             
         </Button>
-        <Button Style="{StaticResource StartButton}" Content="v, S, t" Grid.Row="3" Grid.Column="0">
+        <Button Style="{StaticResource StartButton}" Grid.Row="3" Grid.Column="0">
             
         </Button>
     </Grid>

@@ -20,6 +20,7 @@ namespace PhysicsCalculator.ViewModel
             this.navigation = navigation;
             GoToRoPage = new RelayCommand<object>(GoToRoPageExecute, GoToRoPageCanExecute);
             GoToVelocitiePage = new RelayCommand<object>(GoToVelocitiePageExecute, GoToVelocitiePageCanExecute);
+            GoToForcePage = new RelayCommand<object>(GoToForcePageExecute, GoToForcePageCanExecute);
         }
           
         private ICommand goToVelocitiePage;
@@ -42,6 +43,19 @@ namespace PhysicsCalculator.ViewModel
             navigation.Navigate(new RoPage());
         }
         private bool GoToRoPageCanExecute(object obj)
+        {
+            return true;
+        }
+
+        private ICommand goToForcePage;
+        public ICommand GoToForcePage { get { return goToForcePage; } 
+            set { goToForcePage = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GoToForcePage))); } }
+
+        private void GoToForcePageExecute(object obj)
+        {
+            navigation.Navigate(new ForcePage());
+        }
+        private bool GoToForcePageCanExecute(object obj)
         {
             return true;
         }

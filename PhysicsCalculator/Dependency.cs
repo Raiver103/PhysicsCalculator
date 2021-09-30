@@ -21,6 +21,7 @@ namespace PhysicsCalculator
             services.AddSingleton<VelocitieVM>();
             services.AddSingleton<RoVM>();
             services.AddSingleton<StartVM>();
+            services.AddSingleton<ForceVM>();
 
             services.AddSingleton<PageService>();
           //  services.AddSingleton<Repository>();

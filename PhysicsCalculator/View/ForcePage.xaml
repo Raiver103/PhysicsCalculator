@@ -5,10 +5,100 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PhysicsCalculator.View"
       mc:Ignorable="d" 
+      DataContext="{Binding Source={StaticResource VmLocator}, Path=ForceVM}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ForcePage">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/MainDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="211*"/>
+            <RowDefinition Height="239*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" 
+                   Grid.Row="0"
+                   Margin="5,5,5,5">
+
+            <TextBlock Text="Chose what are you want to find" 
+                       DockPanel.Dock="Top" 
+                       TextWrapping="Wrap" 
+                       FontSize="16" 
+                       FontWeight="Medium"/>
+
+            <ComboBox DockPanel.Dock="Top"  SelectedValue="{Binding WhatSearch}"
+                      ItemsSource="{Binding Search}"
+                      Margin="0 10 0 0"
+                      MaxHeight="30"
+                      Style="{StaticResource x}"/>
+
+            <Button DockPanel.Dock="Bottom" 
+                    Margin="30 15" 
+                    MaxHeight="65" 
+                    Style="{StaticResource CalculateButton}" 
+                    Command="{Binding FindParamCommand}">
+                Go to write velechins
+            </Button>
+        </DockPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,5,5,5" Visibility="{Binding IsCollapsedAll}">
+            <TextBlock Text="We Have:" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
+            <DockPanel Visibility="{Binding IsCollapsedF}" Margin="0 2">
+                <TextBlock Text="t:" ToolTip="Это плотность(кг/м3)" FontSize="14"/>
+                <TextBox Text="{Binding F}" FontSize="14"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding IsCollapsedK}" Margin="0 2">
+                <TextBlock Text="v:" ToolTip="Это масса(кг)" FontSize="14"/>
+                <TextBox Text="{Binding K}" FontSize="14"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding IsCollapsedL}" Margin="0 2">
+                <TextBlock Text="S:" ToolTip="Это обьем(м3)" FontSize="14"/>
+                <TextBox Text="{Binding L}" FontSize="14"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding IsCollapsedM}" Margin="0 2">
+                <TextBlock Text="t:" ToolTip="Это плотность(кг/м3)" FontSize="14"/>
+                <TextBox Text="{Binding M}" FontSize="14"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding IsCollapsedMY}" Margin="0 2">
+                <TextBlock Text="v:" ToolTip="Это масса(кг)" FontSize="14"/>
+                <TextBox Text="{Binding My}" FontSize="14"/>
+            </DockPanel> 
+            
+            <Button VerticalAlignment="Top" 
+                    Margin="30 2" 
+                    MinHeight="26" 
+                    Style="{StaticResource CalculateButton}" 
+                    Command="{Binding SearchCommand}">
+                Go
+            </Button>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0" 
+                   TextWrapping="Wrap"
+                   FontSize="14" Grid.ColumnSpan="2" Margin="0,0,266,0">
+               p = m / V - главная фомула которую можно проверить на практике
+               из нее иожно узнать  m = v * V и V = m / p
+        </TextBlock>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="2" 
+                   TextWrapping="Wrap"
+                   FontSize="14"
+                   Text="{Binding Answer}">
+
+        </TextBlock>
     </Grid>
 </Page>
