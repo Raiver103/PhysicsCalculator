@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PhysicsCalculator" 
         mc:Ignorable="d"  
         DataContext="{Binding Source={StaticResource VmLocator}, Path=MainVM}"  
-        Title="MainWindow" MinHeight="450" MinWidth="800">
+        Title="PhysicsCalculator" MinHeight="450" MinWidth="800">
 
     <Window.Resources>
         <ResourceDictionary>

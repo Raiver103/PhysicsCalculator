@@ -23,9 +23,11 @@ namespace PhysicsCalculator.ViewModel
 
             Search = new ObservableCollection<string>()
             {
-                "Fтяж", "Fтр", "m", "k", "l", "my"
+                "Fтяж", "Fтр", "P", "m", "k", "l", "my"
             };
-            IsCollapsedF = "Collapsed";
+
+            IsCollapsedFtg = "Collapsed";
+            IsCollapsedFtr = "Collapsed";
             IsCollapsedM = "Collapsed";
             IsCollapsedK = "Collapsed";
             IsCollapsedL = "Collapsed";
@@ -45,27 +47,31 @@ namespace PhysicsCalculator.ViewModel
         {
             if (WhatSearch == "Fтяж")
             {
-                Answer = $"{WhatSearch} = m / V => {M * g}";
+                Answer = $"{WhatSearch} = m * g => {M * g}Н";
             }
             else if (WhatSearch == "Fтр")
             {
-                Answer = $"{WhatSearch} = m / V => {M * g}";
+                Answer = $"{WhatSearch} = my * Fтяж => {MY * Ftg}Н";
+            }
+            if (WhatSearch == "P")
+            {
+                Answer = $"{WhatSearch} = m * g => {M * g}Н";
             }
             else if (WhatSearch == "m")
             {
-                Answer = $"{WhatSearch} = F / g => {Ftg / g}";
+                Answer = $"{WhatSearch} = Fтяж / g => {Ftg / g}кг";
             }
             else if (WhatSearch == "k")
             {
-                Answer = $"{WhatSearch} = M / P => {Ftg / L}";
+                Answer = $"{WhatSearch} = Fтяж / l => {Ftg / L}Н/м";
             }
             else if (WhatSearch == "l")
             {
-                Answer = $"{WhatSearch} = P * V => {Ftg / K}";
+                Answer = $"{WhatSearch} = Fтяж / k => {Ftg / K}м";
             }
             else if (WhatSearch == "my")
             {
-                Answer = $"{WhatSearch} = M / P => {Ftg / Ftr}";
+                Answer = $"{WhatSearch} = Fтяж / Fтр => {Ftg / Ftr}";
             }
         }
 
@@ -82,7 +88,8 @@ namespace PhysicsCalculator.ViewModel
         {
             if (WhatSearch == "Fтяж")
             {
-                IsCollapsedF = "Collapsed";
+                IsCollapsedFtg = "Collapsed";
+                IsCollapsedFtr = "Collapsed";
                 IsCollapsedM = "Visible";
                 IsCollapsedK = "Collapsed";
                 IsCollapsedL = "Collapsed";
@@ -92,8 +99,20 @@ namespace PhysicsCalculator.ViewModel
             }
             else if (WhatSearch == "Fтр")
             {
-                IsCollapsedF = "Visible";
+                IsCollapsedFtg = "Visible";
+                IsCollapsedFtr = "Collapsed";
                 IsCollapsedM = "Collapsed";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
+                IsCollapsedMY = "Visible";
+
+                IsCollapsedAll = "Visible";
+            }
+            else if (WhatSearch == "P")
+            {
+                IsCollapsedFtg = "Collapsed";
+                IsCollapsedFtr = "Collapsed";
+                IsCollapsedM = "Visible";
                 IsCollapsedK = "Collapsed";
                 IsCollapsedL = "Collapsed";
                 IsCollapsedMY = "Collapsed";
@@ -102,7 +121,8 @@ namespace PhysicsCalculator.ViewModel
             }
             else if (WhatSearch == "m")
             {
-                IsCollapsedF = "Visible";
+                IsCollapsedFtg = "Visible";
+                IsCollapsedFtr = "Collapsed";
                 IsCollapsedM = "Collapsed";
                 IsCollapsedK = "Collapsed";
                 IsCollapsedL = "Collapsed";
@@ -112,7 +132,8 @@ namespace PhysicsCalculator.ViewModel
             }
             else if (WhatSearch == "k")
             {
-                IsCollapsedF = "Visible";
+                IsCollapsedFtg = "Visible";
+                IsCollapsedFtr = "Collapsed";
                 IsCollapsedM = "Collapsed";
                 IsCollapsedK = "Collapsed";
                 IsCollapsedL = "Visible";
@@ -122,7 +143,8 @@ namespace PhysicsCalculator.ViewModel
             }
             else if (WhatSearch == "l")
             {
-                IsCollapsedF = "Visible";
+                IsCollapsedFtg = "Visible";
+                IsCollapsedFtr = "Collapsed";
                 IsCollapsedM = "Collapsed";
                 IsCollapsedK = "Visible";
                 IsCollapsedL = "Collapsed";
@@ -132,10 +154,11 @@ namespace PhysicsCalculator.ViewModel
             }
             else if (WhatSearch == "my")
             {
-                IsCollapsedF = "Visible";
-                IsCollapsedM = "Visible";
-                IsCollapsedK = "Visible";
-                IsCollapsedL = "Visible";
+                IsCollapsedFtg = "Visible";
+                IsCollapsedFtr = "Visible";
+                IsCollapsedM = "Collapsed";
+                IsCollapsedK = "Collapsed";
+                IsCollapsedL = "Collapsed";
                 IsCollapsedMY = "Collapsed";
                  
                 IsCollapsedAll = "Visible";
@@ -148,7 +171,7 @@ namespace PhysicsCalculator.ViewModel
         }
 
         private string _isCollapsedFtg;
-        public string IsCollapsedF
+        public string IsCollapsedFtg
         {
             get { return _isCollapsedFtg; }
 

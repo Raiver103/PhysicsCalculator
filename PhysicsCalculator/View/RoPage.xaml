@@ -55,15 +55,15 @@
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="5" Visibility="{Binding IsCollapsedAll}">
             <TextBlock Text="We Have:" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
             <DockPanel Visibility="{Binding IsCollapsedP}" Margin="0 2">
-                <TextBlock Text="t:" ToolTip="Это плотность(кг/м3)" FontSize="14"/>
+                <TextBlock Text="t:" ToolTip="(с)" FontSize="14"/>
                 <TextBox Text="{Binding P}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedM}" Margin="0 2">
-                <TextBlock Text="v:" ToolTip="Это масса(кг)" FontSize="14"/>
+                <TextBlock Text="v:" ToolTip="(м/с)" FontSize="14"/>
                 <TextBox Text="{Binding M}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedV}" Margin="0 2">
-                <TextBlock Text="S:" ToolTip="Это обьем(м3)" FontSize="14"/>
+                <TextBlock Text="S:" ToolTip="(м)" FontSize="14"/>
                 <TextBox Text="{Binding V}" FontSize="14"/>
             </DockPanel>
             <Button VerticalAlignment="Top" 

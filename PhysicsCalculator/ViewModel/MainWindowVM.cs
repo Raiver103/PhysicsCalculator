@@ -38,7 +38,8 @@ namespace PhysicsCalculator.ViewModel
         }
 
         private ICommand goToBack;
-        public ICommand GoToBack { get { return goToBack; } set { goToBack = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GoToBack))); } }
+        public ICommand GoToBack { get { return goToBack; } 
+            set { goToBack = value; PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(GoToBack))); } }
 
         private void GoToBackExecute(object obj)
         {
@@ -47,7 +48,7 @@ namespace PhysicsCalculator.ViewModel
 
         private bool GoToBackCanExecute(object obj)
         {
-            return true;
+            return navigation.CanGoToBack;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

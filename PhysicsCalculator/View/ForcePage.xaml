@@ -24,8 +24,8 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="211*"/>
-            <RowDefinition Height="239*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="22*"/>
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Column="0" 
@@ -55,27 +55,31 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,5,5,5" Visibility="{Binding IsCollapsedAll}">
             <TextBlock Text="We Have:" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
-            <DockPanel Visibility="{Binding IsCollapsedF}" Margin="0 2">
-                <TextBlock Text="t:" ToolTip="Это плотность(кг/м3)" FontSize="14"/>
-                <TextBox Text="{Binding F}" FontSize="14"/>
+            <DockPanel Visibility="{Binding IsCollapsedFtg}" Margin="0 2">
+                <TextBlock Text="Fтяж:" ToolTip="(Н)" FontSize="14"/>
+                <TextBox Text="{Binding Ftg}" FontSize="14"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding IsCollapsedFtr}" Margin="0 2">
+                <TextBlock Text="Fтр:" ToolTip="(Н)" FontSize="14"/>
+                <TextBox Text="{Binding Ftr}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedK}" Margin="0 2">
-                <TextBlock Text="v:" ToolTip="Это масса(кг)" FontSize="14"/>
+                <TextBlock Text="k:" ToolTip="(Н/м)" FontSize="14"/>
                 <TextBox Text="{Binding K}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedL}" Margin="0 2">
-                <TextBlock Text="S:" ToolTip="Это обьем(м3)" FontSize="14"/>
+                <TextBlock Text="l:" ToolTip="(м)" FontSize="14"/>
                 <TextBox Text="{Binding L}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedM}" Margin="0 2">
-                <TextBlock Text="t:" ToolTip="Это плотность(кг/м3)" FontSize="14"/>
+                <TextBlock Text="m:" ToolTip="Это плотность(кг/м3)" FontSize="14"/>
                 <TextBox Text="{Binding M}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedMY}" Margin="0 2">
-                <TextBlock Text="v:" ToolTip="Это масса(кг)" FontSize="14"/>
-                <TextBox Text="{Binding My}" FontSize="14"/>
-            </DockPanel> 
-            
+                <TextBlock Text="my:" ToolTip="(0)" FontSize="14"/>
+                <TextBox Text="{Binding MY}" FontSize="14"/>
+            </DockPanel>
+
             <Button VerticalAlignment="Top" 
                     Margin="30 2" 
                     MinHeight="26" 
@@ -85,19 +89,65 @@
             </Button>
         </StackPanel>
 
+        <!--Text-->
         <TextBlock Grid.Row="1"
                    Grid.Column="0" 
                    TextWrapping="Wrap"
-                   FontSize="14" Grid.ColumnSpan="2" Margin="0,0,266,0">
-               p = m / V - главная фомула которую можно проверить на практике
-               из нее иожно узнать  m = v * V и V = m / p
+                   FontSize="14"
+                   Margin="5,5,5,5">
+                3 Kinds of F
+            <LineBreak/>
+            <LineBreak/>
+                g = 10 [0] 
+            <LineBreak/>
+                Fтяж, Fупр, Fтр = mg [H]
+            <LineBreak/>
+                k - коэфицент = [H/м]
+            <LineBreak/>
+                |l| - дельта эль(примо) [м]
+            <LineBreak/>
+                my(мю) - коэфицент трения [0]
+            <LineBreak/>
+                N = Fупр = P = Fтяж [Н]
+            <LineBreak/>
+                P - вес тела = Fупр = Fтяж но строго без скорости  [Н]
+        </TextBlock>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1" 
+                   TextWrapping="Wrap"
+                   FontSize="14"
+                   Margin="5,5,5,5">
+                1. Fтяж - сила тяжести
+            <LineBreak/>
+                Fтяж = mg 
+            <LineBreak/>
+                Fупр - сила упругости
+            <LineBreak/>
+                Fупр = Fтяж = mg
+            <LineBreak/>
+                Fупр = k * |l|
+        </TextBlock>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="2" 
+                   TextWrapping="Wrap"
+                   FontSize="14" 
+                   Margin="5,5,5,5">
+             
+               2. P = Fупр = Fтяж = mg 
+            <LineBreak/>
+            <LineBreak/>
+                3.Fтр - сила трения
+            <LineBreak/>
+                Fтр = my * N
         </TextBlock>
 
         <TextBlock Grid.Row="0"
-                   Grid.Column="2" 
+                   Grid.Column="1" 
                    TextWrapping="Wrap"
                    FontSize="14"
-                   Text="{Binding Answer}">
+                   Text="{Binding Answer}" Grid.ColumnSpan="2" Margin="266,0,0,0">
 
         </TextBlock>
     </Grid>

@@ -59,15 +59,15 @@
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="5" Visibility="{Binding IsCollapsedAll}">
             <TextBlock Text="We Have:" TextWrapping="Wrap" FontSize="16" FontWeight="Medium"/>
             <DockPanel Visibility="{Binding IsCollapsedT}" Margin="0 2">
-                <TextBlock Text="t:" ToolTip="Это время(секкунды)" FontSize="14"/>
+                <TextBlock Text="t:" ToolTip="(с)" FontSize="14"/>
                 <TextBox Text="{Binding T}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedV}" Margin="0 2">
-                <TextBlock Text="v:" ToolTip="Это скорорсть(км/ч)" FontSize="14"/>
+                <TextBlock Text="v:" ToolTip="(км/ч)" FontSize="14"/>
                 <TextBox Text="{Binding V}" FontSize="14"/>
             </DockPanel>
             <DockPanel Visibility="{Binding IsCollapsedS}" Margin="0 2">
-                <TextBlock Text="S:" ToolTip="Это путь(метры)" FontSize="14"/>
+                <TextBlock Text="S:" ToolTip="(м)" FontSize="14"/>
                 <TextBox Text="{Binding S}" FontSize="14"/>
             </DockPanel>
             <Button VerticalAlignment="Top" 
