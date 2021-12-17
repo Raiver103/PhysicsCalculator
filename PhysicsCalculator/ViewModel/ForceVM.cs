@@ -14,7 +14,7 @@ namespace PhysicsCalculator.ViewModel
 {
     internal class ForceVM : INotifyPropertyChanged
     {
-        const int g = 10;
+        const int G = 10;
 
         private PageService navigation;
         public ForceVM(PageService navigation)
@@ -47,7 +47,7 @@ namespace PhysicsCalculator.ViewModel
         {
             if (WhatSearch == "Fтяж")
             {
-                Answer = $"{WhatSearch} = m * g => {M * g}Н";
+                Answer = $"{WhatSearch} = m * g => {M * G}Н";
             }
             else if (WhatSearch == "Fтр")
             {
@@ -55,11 +55,11 @@ namespace PhysicsCalculator.ViewModel
             }
             if (WhatSearch == "P")
             {
-                Answer = $"{WhatSearch} = m * g => {M * g}Н";
+                Answer = $"{WhatSearch} = m * g => {M * G}Н";
             }
             else if (WhatSearch == "m")
             {
-                Answer = $"{WhatSearch} = Fтяж / g => {Ftg / g}кг";
+                Answer = $"{WhatSearch} = Fтяж / g => {Ftg / G}кг";
             }
             else if (WhatSearch == "k")
             {

@@ -14,5 +14,6 @@ namespace PhysicsCalculator
         public StartVM StartVM => Dependency.Resolve<StartVM>();
         public RoVM RoVM => Dependency.Resolve<RoVM>();
         public ForceVM ForceVM => Dependency.Resolve<ForceVM>();
+        public PressureVM PressureVM => Dependency.Resolve<PressureVM>();
     }
 }

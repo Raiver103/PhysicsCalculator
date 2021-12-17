@@ -4,11 +4,53 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PhysicsCalculator.View"
+      DataContext="{Binding Source={StaticResource VmLocator}, Path=PressureVM}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PressurePage">
-
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/MainDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="22*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Column="0" 
+                   Grid.Row="0"
+                   Margin="5">
+
+            <TextBlock Text="Chose what are you want to find" 
+                       DockPanel.Dock="Top" 
+                       TextWrapping="Wrap" 
+                       FontSize="16" 
+                       FontWeight="Medium"/>
+
+            <ComboBox DockPanel.Dock="Top"  SelectedValue="{Binding WhatSearch}"
+                      ItemsSource="{Binding Search}"
+                      Margin="0 10 0 0"
+                      MaxHeight="30"
+                      Style="{StaticResource x}"/>
+
+            <Button DockPanel.Dock="Bottom" 
+                    Margin="30 15" 
+                    MaxHeight="65" 
+                    Style="{StaticResource CalculateButton}" 
+                    Command="{Binding FindParamCommand}">
+                Go to write velechins
+            </Button>
+        </DockPanel>
     </Grid>
 </Page>
